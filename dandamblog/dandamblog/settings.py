@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blog',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+      <div class="">
+        <h1>{% block title %} {{ object.title }} {% endblock title %}</h1>
+        <p class="">{{ post.author }} | {{ post.created_on }}</p>
+        <p class="">{{ object.content | safe }}</p>
+      </div>
+    </div>
+
+    {% block sidebar %}
+    {% include 'sidebar.html' %}
+    {% endblock sidebar %}
+
+
+{% endblock content %}

@@ -23,7 +23,7 @@ class FlatPageAdmin(SummernoteModelAdmin):
             _('Advanced options'),
          {
             'classes': ['collapse'],
-            'fields': ['template_name',],
+            'fields': ['template_name','sites'],
          },
         ),
     ]

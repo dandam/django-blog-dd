@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Daniel Damkoehler</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/reset-ancient.css' %}">
+</head>
+<body>
+    <header>
+        <div><a href="{% url 'home' %}">daniel damkoehler</a></div>
+        <nav>
+            <ul class="">
+                <li class="">
+                    <a class="" href="/pages/aboutme/">about me</a>
+                </li>
+                <li class="">
+                    <a class="" href="#">Policy</a>
+                </li>
+                <li class="">
+                    <a class="n" href="#">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+    </div>
+
+    <footer>
+        <p>Copyright &copy; Daniel Damkoehler</p>
+    </footer>
+</body>
+</html>

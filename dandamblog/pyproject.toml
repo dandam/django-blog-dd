@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "dandamblog"
+version = "0.1.0"
+description = "learning project for dandam"
+authors = ["Daniel Damkoehler <170141+dandam@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django-unfold = "^0.18.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -2,7 +2,7 @@ from django.contrib import admin
 # from django.contrib import ModelAdmin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
-from .models import Post
+from .models import Post, Category
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.utils.translation import gettext_lazy as _
@@ -14,12 +14,17 @@ admin.site.unregister(User)
 class UserAdmin(BaseUserAdmin, ModelAdmin):
     pass
 
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("name",)}
+
+admin.site.register(Category, CategoryAdmin)
+
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'status', 'created_on')
+    list_display = ('title', 'slug', 'status', 'created_on', 'category')
     list_filter = ('status', 'created_on')
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
-    summernote_fields = {'content'}
+    # summernote_fields = {'content'}
 
 admin.site.register(Post, PostAdmin)
 

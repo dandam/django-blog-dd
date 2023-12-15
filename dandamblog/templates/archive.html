@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>This is the archive</h1>
+<p>it will be the paginated view of all the posts, eventually filterable by category and maybe even tag</p>
+
+{% for post in post_list %}
+<div class="">
+    <div class="">
+        <h2 class="">{{ post.title }}</h2>
+        <p class="">{{ post.author }} | {{ post.created_on}} </p>
+        <p class="">{{post.content|slice:":200" }}</p>
+        <a href="{% url 'post_detail' post.slug  %}" class="">Read More &rarr;</a>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

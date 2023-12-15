@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>This is a Category page for {{ category.name }}</h1>
+<p>it will be the paginated view of all the posts in a given category, eventually filterable by category and maybe even tag</p>
+
+{% for post in posts %}
+<div class="">
+    <div class="">
+        <h2><em>{{ post.title }}</em></h2>
+        <p class="">{{ post.author }} | {{ post.created_on}} </p>
+        <p class="">{{post.content|slice:":200" }}</p>
+        <a href="{% url 'post_detail' post.slug  %}" class="">Read More &rarr;</a>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

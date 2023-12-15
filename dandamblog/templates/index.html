@@ -1,14 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-{% for post in post_list %}
-<div class="">
-    <div class="">
-        <h2 class="">{{ post.title }}</h2>
-        <p class="">{{ post.author }} | {{ post.created_on}} </p>
-        <p class="">{{post.content|slice:":200" }}</p>
-        <a href="{% url 'post_detail' post.slug  %}" class="">Read More &rarr;</a>
-    </div>
-</div>
+{% for category in category_list %}
+<p><a href="{% url 'category' category.slug %}">{{ category.name }}</a></p>
 {% endfor %}
 
 {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}

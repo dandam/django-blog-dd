@@ -1,5 +1,5 @@
 from django.views import generic
-from .models import Post
+from .models import Post, Category
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, redirect
 
@@ -28,10 +28,32 @@ from django.shortcuts import render, redirect
 
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'index.html'
-    paginate_by = 1
+    template_name = 'category.html'
+    paginate_by = 5
 
 class PostDetail(generic.DetailView):
     model = Post
     template_name = 'post_detail.html'
 
+class CategoryList(generic.ListView):
+    queryset = Category.objects.all()
+    categories = Category.objects.all()
+    template_name = 'index.html'
+
+
+def category(request, slug):
+    posts = Post.objects.filter(category__slug=slug).filter(status=1)
+    requested_category = Category.objects.get(slug=slug)
+    categories = Category.objects.all()
+
+    return render(request, 'category.html', {
+        'posts': posts,
+        'category': requested_category,
+        'categories': categories,
+    })
+
+
+# class Category(generic.ListView, slug):
+#     queryset = Post.objects.filter(category_slug=slug).filter(status=1).order_by('-created_on')
+#     requested_category = Category.objects.get(slug=slug)
+#     categories = Category.objects.all()

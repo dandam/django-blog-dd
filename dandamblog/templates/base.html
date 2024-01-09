@@ -9,17 +9,13 @@
 <body>
     <header>
         <div><a href="{% url 'home' %}">daniel damkoehler</a></div>
+        {% load flatpages %}
+        {% get_flatpages as flatpages %}
         <nav>
-            <ul class="">
-                <li class="">
-                    <a class="" href="/pages/aboutme/">about me</a>
-                </li>
-                <li class="">
-                    <a class="" href="#">Policy</a>
-                </li>
-                <li class="">
-                    <a class="n" href="#">Contact</a>
-                </li>
+            <ul>
+            {% for page in flatpages %}
+                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+            {% endfor %}
             </ul>
         </nav>
     </header>

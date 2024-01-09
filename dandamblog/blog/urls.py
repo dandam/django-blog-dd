@@ -6,4 +6,5 @@ urlpatterns = [
     path('archive/', views.PostList.as_view(), name='archive'),
     path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
     path('category/<slug:slug>', views.category, name='category'),
+    path('<slug:slug>', views.tag, name='tagpage'),
 ]

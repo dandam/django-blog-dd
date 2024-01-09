@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 STATUS = [
     [0, 'Draft'],
@@ -29,9 +30,10 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     is_featured = models.BooleanField(default=False)
     featured_image = models.ImageField(upload_to='img/featured_images', default='img/featured_image.jpg')
+    tags = TaggableManager()
 
     #relationships
-    category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.CASCADE)
+    category = models.ForeignKey(to=Category, related_name="posts", blank=True, null=True, on_delete=models.SET_NULL)
 
     class Meta:
         ordering = ['-created_on']
